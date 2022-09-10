@@ -2,7 +2,7 @@ const db = require("../database/models");
 
 module.exports = {
   createRecord: async function (req, res, next) {
-    const { record } = req;
+    const { record } = req.body;
     await db.Record.create(record)
       .then(() => {
         res.json({ message: "Record created successfully" });
