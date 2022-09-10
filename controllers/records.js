@@ -18,7 +18,7 @@ module.exports = {
       .catch((error) => res.status(500).json({ message: error }));
   },
   getAllRecords: async function (req, res, next) {
-    await db.Record.findAll()
+    await db.Record.findAll({order:[['score', 'DESC']]})
       .then((result) => {
         res.status(202).json({ message: "Records found!", records: result });
       })
